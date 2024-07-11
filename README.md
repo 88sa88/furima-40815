@@ -29,39 +29,62 @@ Things you may want to cover:
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
 |email               | string          |null:false, unique: true            |
-|encrypted_password  | string          |null:false,                         |
-|nickname            | string          |null:false,                         |
-|name                | string          |null:false,                         |
-|name_kana           | string          |null:false,                         |
-|birthday            | date            |null:false,                         |
+|encrypted_password  | string          |null:false                          |
+|nickname            | string          |null:false                          |
+|first_name          | string          |null:false                          |
+|last_name           | string          |null:false                          |
+|first_name_kana     | string          |null:false                          |
+|last_name_kana      | string          |null:false                          |
+|birthday            | date            |null:false                          |
+### Association
+
+- has_many :items
+- has_many :purchases
+
+
 
 #itemsテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
-|item_name           | text            |null:false,                         |
-|explanation         | text            |null:false,                         |
-|category            | string          |null:false,                         |
-|situation           | string          |null:false,                         |
-|postage             | string          |null:false,                         |
-|region              | string          |null:false,                         |
-|shipping_day        | string          |null:false,                         |
-|price               | string          |null:false,                         |
+|item_name           | string          |null:false                          |
+|explanation         | text            |null:false                          |
+|category_id         | integer         |null:false                          |
+|situation_id        | integer         |null:false                          |
+|postage_id          | integer         |null:false                          |
+|prefectures_id      | integer         |null:false                          |
+|shipping_day_id     | integer         |null:false                          |
+|price               | integer         |null:false                          |
 |user                | reference       |null:false, foreign_key: true       |
+
+### Association
+
+- belongs_to :user
+- has_one :purchase
 
 #purchasesテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
 |user                | reference       |null:false, foreign_key: true       |
 |item                | reference       |null:false, foreign_key: true       |
-|shipping_address    | reference       |null:false, foreign_key: true       |
 
-#shipping_addressテーブル
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address
+
+
+#shipping_addresssテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
-|post_code           | integer         |null:false,                         |
-|prefectures         | string          |null:false,                         |
-|municipality        | string          |null:false,                         |
-|street_address      | string          |null:false,                         |
+|post_code           | string          |null:false                          |
+|prefectures_id      | integer         |null:false                          |
+|municipality        | string          |null:false                          |
+|street_address      | string          |null:false                          |
 |building            | string          |                                    |
-|telephone_number    | integer         |null:false,                         |
+|telephone_number    | string          |null:false                          |
 |purchase            | reference       |null:false, foreign_key: true       |
+
+### Association
+
+- belongs_to :purchase
