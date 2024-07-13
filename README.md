@@ -25,7 +25,7 @@ Things you may want to cover:
 
 
 #テーブル設計
-#users
+# users
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
 |email               | string          |null:false, unique: true            |
@@ -43,7 +43,7 @@ Things you may want to cover:
 
 
 
-#itemsテーブル
+# itemsテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
 |item_name           | string          |null:false                          |
@@ -54,18 +54,18 @@ Things you may want to cover:
 |prefecture_id       | integer         |null:false                          |
 |shipping_day_id     | integer         |null:false                          |
 |price               | integer         |null:false                          |
-|user                | reference       |null:false, foreign_key: true       |
+|user                | references      |null:false, foreign_key: true       |
 
 ### Association
 
 - belongs_to :user
 - has_one :purchase
 
-#purchasesテーブル
+# purchasesテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
-|user                | reference       |null:false, foreign_key: true       |
-|item                | reference       |null:false, foreign_key: true       |
+|user                | references      |null:false, foreign_key: true       |
+|item                | references      |null:false, foreign_key: true       |
 
 ### Association
 
@@ -74,7 +74,7 @@ Things you may want to cover:
 - has_one :shipping_address
 
 
-#shipping_addresssテーブル
+# shipping_addresssテーブル
 | Column             | Type            | Options                            |
 |--------------------|-----------------|------------------------------------|
 |post_code           | string          |null:false                          |
@@ -83,7 +83,7 @@ Things you may want to cover:
 |street_address      | string          |null:false                          |
 |building            | string          |                                    |
 |telephone_number    | string          |null:false                          |
-|purchase            | reference       |null:false, foreign_key: true       |
+|purchase            | references      |null:false, foreign_key: true       |
 
 ### Association
 
