@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :password, format:{ with: VALID_PASSWORD_REGEX}
 
 
+
 end
