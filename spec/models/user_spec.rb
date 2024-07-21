@@ -85,12 +85,17 @@ end
       @user.valid?
       expect(@user.errors.full_messages).to include "Last name can't be blank"
     end
+    it '名字は全角（漢字・ひらがな・カタカナ)での入力が必須であること' do
+      @user.first_name = 'saga'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name is invalid"
+    end
     it 'お名前は全角（漢字・ひらがな・カタカナ)での入力が必須であること' do
       @user.last_name = 'saga'
       @user.valid?
       expect(@user.errors.full_messages).to include "Last name is invalid"
     end
-    it 'お名前カナ（全角）は名字が必須であること' do
+    it '名字カナ（全角）は名字が必須であること' do
       @user.first_name_kana= ''
       @user.valid?
       expect(@user.errors.full_messages).to include "First name kana can't be blank"
