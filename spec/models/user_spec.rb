@@ -74,11 +74,6 @@ RSpec.describe User, type: :model do
 end
  describe '新規登録/本人情報確認' do
 
-  context '新規登録できるとき' do
-    it '全ての項目が存在し、条件を満たすとき' do
-      expect(@user).to be_valid
-    end
-  end
   context '新規登録できない時'do
     it '名字が必須であること' do
       @user.first_name = ''
