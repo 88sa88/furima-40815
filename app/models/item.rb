@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :situation
   belongs_to :postage
   belongs_to :prefecture
-  belongs_to :Shipping_day
+  belongs_to :shipping_day
 
   has_one_attached :image
 
