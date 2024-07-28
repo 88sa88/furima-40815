@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :explanation, presence: true
   validates :image, presence: true
-  validates :price, presence: true , format: { with: /\A\d+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :price, presence: true , numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   #学習メモ実装して確認する※バリテーションで空だとエラーとしているが上記で1を選ぶとメッセージが出るようにしている。上記がエラーになる
   
