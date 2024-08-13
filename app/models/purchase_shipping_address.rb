@@ -9,7 +9,7 @@ class PurchaseShippingAddress
     validates :prefecture_id ,   numericality: {other_than: 0, message: "can't be blank"}
     validates :municipality
     validates :street_address
-    validates :telephone_number, format: {with:  format: { with: /\A0\d{9,10}\z/ } ,message: "is invalid. number digits"}
+    validates :telephone_number, format: { with: /\A0\d{9,10}\z/, message: "is invalid. number digits"}
     validates :purchase
   end
 
