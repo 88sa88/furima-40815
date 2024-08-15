@@ -1,6 +1,6 @@
 class PurchaseShippingAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :street_address, :building, :telephone_number, :prefecture_id
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :street_address, :building, :telephone_number, :prefecture_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class PurchaseShippingAddress
     validates :municipality
     validates :street_address
     validates :telephone_number, format: { with: /\A0\d{9,10}\z/, message: "is invalid. number digits"}
+    validates :token
   end
 
   def save
