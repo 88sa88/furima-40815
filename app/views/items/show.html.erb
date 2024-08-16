@@ -35,7 +35,7 @@
       
       <% else %>
         <%# 学習メモ※商品購入機能実装後商品が売れていない場合はこちらを表示しましょうの条件式を追加する %>
-        <%= link_to "購入画面に進む", item_purchases_path(@item.id) , date: { turbo: false }, class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", item_purchases_path(@item.id) , data: { turbo: false }, class:"item-red-btn"%>
         <%# //学習メモ※商品購入機能実装後商品が売れていない場合はこちらを表示しましょうの条件式を追加する %>
      <% end %>
     <% end %>
