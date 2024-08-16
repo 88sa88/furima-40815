@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :index]
-
+  before_action :redirect_user, only: [:index]
+  
   def index
     @purchase_shipping_address = PurchaseShippingAddress.new
-    @item = Item.find(params[:item_id])
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
   end
 
@@ -29,6 +29,13 @@ class PurchasesController < ApplicationController
   private
   def purchase_shipping_address_params
     params.require(:purchase_shipping_address).permit(:post_code, :prefecture_id, :municipality, :street_address, :building, :telephone_number).merge(token: params[:token])
+  end
+
+  def redirect_user
+    @item = Item.find(params[:item_id])
+    unless @item.purchase.blank?
+      redirect_to root_path
+    end
   end
 
 end
