@@ -3,6 +3,9 @@ class PurchasesController < ApplicationController
   before_action :redirect_user, only: [:index, :create]
   
   def index
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
     unless @item.purchase.blank?
       redirect_to root_path
     end
